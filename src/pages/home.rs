@@ -101,6 +101,7 @@ impl Component for Home {
                     <div>
                         <img src = {&product.image}/>
                         <div>{&product.name}</div>
+                        <div>{&product.description.to_string()}</div>
                         <div>{"$"}{&product.price.to_string()}</div>
                         <button onclick=self.link.callback(move |_| Msg::AddToCart(product_id))>{"Add To Cart"}</button>
                     </div>
@@ -118,7 +119,6 @@ impl Component for Home {
             <div>
                 <span>{format!("Cart Value: {:.2}", cart_value)}</span>
                 <span>{products}</span>
-
             </div>
         }
     }
