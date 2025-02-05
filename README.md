@@ -8,7 +8,7 @@ The goal of the project is to learn how to encapsulate rust code in a web page u
 cargo new --lib project-name
 ```
 
-You **MUST** use a lib, for this project, tbh i don't know yet why...
+You **MUST** use a lib for this project, tbh i don't know yet why...
 
 # Installed packages
 
@@ -64,3 +64,7 @@ cargo make build
 cargo make serve
 ```
 - Starts the server, go to http://localhost:3000
+
+# For images
+
+- Create an assets directory in the static directory and add your assets
