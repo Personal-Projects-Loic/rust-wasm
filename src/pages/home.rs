@@ -1,4 +1,5 @@
 use crate::api;
+use crate::components::ProductCard;
 use crate::types::{CartProduct, Product};
 use anyhow::Error;
 use yew::format::Json;
@@ -109,13 +110,7 @@ impl Component for Home {
             .map(|product: &Product| {
                 let product_id = product.id;
                 html! {
-                    <div>
-                        <img src = {&product.image}/>
-                        <div>{&product.name}</div>
-                        <div>{&product.description.to_string()}</div>
-                        <div>{"$"}{&product.price.to_string()}</div>
-                        <button onclick=self.link.callback(move |_| Msg::AddToCart(product_id))>{"Add To Cart"}</button>
-                    </div>
+                    <ProductCard product={product} on_add_to_cart=self.link.callback(move |_| Msg::AddToCart(product_id))/>
                 }
             })
             .collect();
@@ -138,10 +133,13 @@ impl Component for Home {
             }
         } else {
             html! {
-                <div>
-                <span>{format!("Cart Value: {:.2}", cart_value)}</span>
-                <span>{products}</span>
-            </div>
+                <div class="navbar">
+                    <div>
+                        <div class="navbar_title">{"Prout!"}</div>
+                        <div class="navbar_cart_value">{format!("${:.2}", cart_value)}</div>
+                    </div>
+                    <div class="product_card_list">{products}</div>
+                </div>
             }
         }
     }
